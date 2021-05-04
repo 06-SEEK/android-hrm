@@ -57,5 +57,5 @@ deploy:
   on:
     tags: true
     branch: main
-# after_success:
-# - sh set_tags.sh
+after_success:
+- sh set_tags.sh
