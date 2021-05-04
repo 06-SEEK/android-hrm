@@ -12,12 +12,6 @@ android {
     }
 
     signingConfigs {
-        debug {
-            storeFile file('/Volumes/lvh/hrm/android-hrm/keyhrm')
-            storePassword 'loveforever778'
-            keyAlias 'keyhrm'
-            keyPassword 'loveforever778'
-        }
         release
     }
 
