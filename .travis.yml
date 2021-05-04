@@ -25,10 +25,10 @@ before_install:
 # - tar -xvf secrets.tar
 script:
 # - "./gradlew assembleRelease"
-# - "./gradlew build"
+- "./gradlew clean build"
 # - if [ "$TRAVIS_BRANCH" = "main" ]; then ./gradlew publish; else ./gradlew build;
 #   fi
-- "./gradlew clean build connectedAndroidTest -PdisablePreDex --stacktrace"
+# - "./gradlew clean build connectedAndroidTest -PdisablePreDex --stacktrace"
 notifications:
   email: true
 
