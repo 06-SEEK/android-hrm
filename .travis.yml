@@ -15,6 +15,7 @@ before_install:
   -in key.jks.enc -out key.jks -d
 - chmod +x gradlew
 script:
+- ./gradlew assembleRelease
 - if [ "$TRAVIS_BRANCH" = "main" ]; then ./gradlew publish; else ./gradlew build;
   fi
 before_deploy:
