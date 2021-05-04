@@ -15,7 +15,7 @@ before_install:
   -in key.jks.enc -out key.jks -d
 - chmod +x gradlew
 script:
-- if [ "$TRAVIS_BRANCH" = "master" ]; then ./gradlew publish; else ./gradlew build;
+- if [ "$TRAVIS_BRANCH" = "main" ]; then ./gradlew publish; else ./gradlew build;
   fi
 before_deploy:
 - export APP_VERSION=$(./gradlew :app:printVersionName)
@@ -31,4 +31,4 @@ deploy:
   tag_name: "$APP_VERSION"
   body: "$APP_CHANGELOG"
   on:
-    branch: master
+    branch: main
