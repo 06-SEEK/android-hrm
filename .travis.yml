@@ -7,12 +7,15 @@ env:
 android:
   components:
   - tools
+  - tools
   - platform-tools
   - build-tools-28.0.3
   - android-${ANDROID_API}
   - extra-google-google_play_services
   - extra-google-m2repository
   - extra-android-m2repository
+  licenses:
+  - android-sdk-license-.+
 before_install:
 - openssl aes-256-cbc -K $encrypted_59da33dcd24e_key -iv $encrypted_59da33dcd24e_iv
   -in keyhrm.enc -out keyhrm -d
