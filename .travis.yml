@@ -31,6 +31,7 @@ before_deploy:
 - export APP_VERSION=$(./gradlew :app:printVersionName)
 # - export APP_CHANGELOG=$(cat app/src/main/play/release-notes/en-US/default.txt)
 deploy:
+- provider: releases
   api_key: "$GITHUB_TOKEN"
   file: app/build/outputs/apk/release/*
   file_glob: true
