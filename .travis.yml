@@ -4,6 +4,10 @@ jdk:
 env:
   global:
   - ANDROID_API=28
+  - OWNER=${TRAVIS_REPO_SLUG%/*}
+  - DEV=${OWNER/vanhiep184/dev}
+  - BRANCH=${TRAVIS_BRANCH/main/}
+  - TAG=${DEV}${BRANCH:+_}${BRANCH}
 android:
   components:
   - tools
@@ -44,10 +48,15 @@ cache:
 before_deploy:
 - export APP_VERSION=$(./gradlew :app:printVersionName)
 # - export APP_CHANGELOG=$(cat app/src/main/play/release-notes/en-US/default.txt)
+- git tag -f travis-${TAG}-build
+- git remote add gh
+    https://${OWNER}:${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git
+- git push gh :travis-${TAG}-build || true
+- git push -f gh travis-${TAG}-build
+- git remote remove gh
 deploy:
   provider: releases
   api_key: "$GITHUB_TOKEN"
-  deploy_key: keyhrm
   file: app/build/outputs/apk/release/*
   file_glob: true
   skip_cleanup: true
@@ -57,5 +66,5 @@ deploy:
   on:
     tags: true
     branch: main
-after_success:
-- sh set_tags.sh
+# after_success:
+# - sh set_tags.sh
