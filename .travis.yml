@@ -22,8 +22,9 @@ before_install:
 - yes | sdkmanager "platform-tools" "platforms;android-28"
 script:
 - "./gradlew assembleRelease"
-- if [ "$TRAVIS_BRANCH" = "main" ]; then ./gradlew publish; else ./gradlew build;
-  fi
+- "./gradlew build"
+# - if [ "$TRAVIS_BRANCH" = "master" ]; then ./gradlew publish; else ./gradlew build;
+#   fi
 before_deploy:
 - export APP_VERSION=$(./gradlew :app:printVersionName)
 - export APP_CHANGELOG=$(cat app/src/main/play/release-notes/en-US/default.txt)
