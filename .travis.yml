@@ -54,7 +54,7 @@ deploy:
   name: "$APP_VERSION"
   tag_name: "$APP_VERSION"
   on:
-    tags: true
+    # tags: true
     branch: main
 # after_success:
 # - sh set_tags.sh
