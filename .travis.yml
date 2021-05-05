@@ -25,25 +25,35 @@ before_install:
   -in keyhrm.enc -out keyhrm -d
 - yes | sdkmanager "platform-tools" "platforms;android-28"
 - chmod +x gradlew
+# - tar -cvf secrets.tar keyhrm service.json
+# - tar -xvf secrets.tar
 script:
+# - "./gradlew assembleRelease"
+# - "./gradlew clean build"
+# - if [ "$TRAVIS_BRANCH" = "main" ]; then ./gradlew publish; else ./gradlew build;
+#   fi
 - "./gradlew clean build connectedAndroidTest -PdisablePreDex --stacktrace"
-# notifications:
-#   email: true
-# before_cache:
-# - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
-# cache:
-#   directories:
-#   - "$HOME/.m2"
-#   - "$HOME/.gradle"
-#   - "$HOME/.gradle/caches/"
-#   - "$HOME/.gradle/wrapper/"
+notifications:
+  email: true
+
+before_cache:
+- rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+
+cache:
+  directories:
+  - "$HOME/.m2"
+  - "$HOME/.gradle"
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
 before_deploy:
 - export APP_VERSION=$(./gradlew :app:printVersionName)
- # Set up git user name and tag this commit
-- git config --local user.name "vanhiep184"
-- git config --local user.email "levanhiep.95.95@gmail.com"
-- export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
-- git tag $TRAVIS_TAG
+# - export APP_CHANGELOG=$(cat app/src/main/play/release-notes/en-US/default.txt)
+- git tag -f travis-${TAG}-build
+- git remote add gh
+    https://${OWNER}:${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git
+- git push gh :travis-${TAG}-build || true
+- git push -f gh travis-${TAG}-build
+- git remote remove gh
 deploy:
   provider: releases
   api_key: "$GITHUB_TOKEN"
@@ -54,7 +64,7 @@ deploy:
   name: "$APP_VERSION"
   tag_name: "$APP_VERSION"
   on:
-    # tags: true
+    tags: true
     branch: main
 # after_success:
 # - sh set_tags.sh
