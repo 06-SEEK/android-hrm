@@ -48,11 +48,11 @@ cache:
 before_deploy:
 - export APP_VERSION=$(./gradlew :app:printVersionName)
 # - export APP_CHANGELOG=$(cat app/src/main/play/release-notes/en-US/default.txt)
-- git tag -f travis-${TAG}-build
+- git tag -f travis-${TAG}-build-${APP_VERSION}
 - git remote add gh
     https://${OWNER}:${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git
-- git push gh :travis-${TAG}-build || true
-- git push -f gh travis-${TAG}-build
+- git push gh :travis-${TAG}-build-${APP_VERSION} || true
+- git push -f gh travis-${TAG}-build-${APP_VERSION}
 - git remote remove gh
 deploy:
   provider: releases
