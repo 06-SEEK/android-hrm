@@ -41,7 +41,7 @@ before_deploy:
 - export APP_VERSION=$(./gradlew :app:printVersionName)
 deploy:
   provider: releases
-  user: "GITHUB USERNAME"
+  user: "$GITHUB_USERNAME"
   password:
     secure: o0jffA6rZO6LR965MVbqdTI62WCzvliy9rOlZokSeYGs0VHl3HHaIh223BoFHMOnMXhLva2y3KDldq3bGiv1p8YeG1yyw3AaFOdVabDxvOepx2QpJ2IcegdTh3mS02Qo36rgjaiVNkwtyzbL6LN/bvSMDOBSoE7slRCOO22w0CRz5UHuZDRJxKt8X0Mk56nyXF+uyrC9YkAvWlMEhsZAN+0rnnMJ86aRjcb1Rl14nJUP9bSC75HxOEhfqGgvEIJ2tX9C+f8t/m9P8iyAvbejpM4yDmJfsHmsLbGdnPfQojYpaFbxkfkTjRNGLsEOSlUErWGbiBtRu88KSxKQD31fOWhNKuFlaPqiTbf6jdG3opscwTizC0jGRxTTuMXDfKYzZdu9iZSooCto+n0pNGQxuuo/Lq5hBac9ycTEYX5E0cDOOLvu/aV2AEM/4U/oTRhJsabfBjPUsHjPNIq6ECu17B4PXNQDxgnfc6uQCPDAofpqIop/Vs/kKUrR5vFFqx6N5K6BD4wv+Uek3gr76mZcm0KVJ2vRt/h8XktMTP9ug3mUXVCRtOQ2BiqmkHWyE3c94miLTqKMj+HA7Wr1EvJccU7z3coxdoZTpwKvcGY15EI5mP2xon42KNw+MKOg81XkQyEWYxgQZfL1FjgQrQIiSZkPQCwFAX3vE140lqDSWuM=
   file: app/build/outputs/apk/release/*
@@ -53,5 +53,5 @@ deploy:
   on:
     tags: true
     branch: main
-after_success:
-- sh set_tags.sh
+# after_success:
+# - sh set_tags.sh
