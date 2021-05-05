@@ -39,6 +39,7 @@ cache:
   - "$HOME/.gradle/wrapper/"
 before_deploy:
 - export APP_VERSION=$(./gradlew :app:printVersionName)
+- git tag $APP_VERSION
 deploy:
   provider: releases
   user: "$GITHUB_USERNAME"
@@ -53,5 +54,5 @@ deploy:
   on:
     tags: true
     branch: main
-after_success:
-- sh set_tags.sh
+# after_success:
+# - sh set_tags.sh
