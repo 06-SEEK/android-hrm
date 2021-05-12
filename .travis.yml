@@ -68,3 +68,10 @@ deploy:
     branch: main
 # after_success:
 # - sh set_tags.sh
+
+notifications:  
+  email:
+    recipients:
+      - levanhiep.95.95@gmail.com
+    on_success: always  
+    on_failure: always
