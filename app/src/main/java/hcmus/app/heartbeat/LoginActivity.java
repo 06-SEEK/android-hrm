@@ -1,0 +1,105 @@
+package hcmus.app.heartbeat;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
+import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import hcmus.app.heartbeat.databinding.ActivityLoginBinding;
+import hcmus.app.heartbeat.model.LoginResponse;
+import hcmus.app.heartbeat.network.RetrofitClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class LoginActivity extends AppCompatActivity {
+    private ActivityLoginBinding binding;
+    private String inputEmail;
+    private String inputPassword;
+    private static final String regex = "^(.+)@(.+)$";
+    private static final Pattern pattern = Pattern.compile(regex);
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
+        ActionBar bar = getSupportActionBar();
+        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#000000")));
+        binding.buttonRegister.setOnClickListener(view -> {
+            startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
+        });
+
+        binding.editTextEmail.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                boolean isValidEmail = pattern.matcher(charSequence).matches();
+                if (isValidEmail == true) {
+
+                } else {
+                    binding.editTextEmail.setError("Invalid email");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        binding.buttonLogin.setOnClickListener(view -> {
+            boolean isValidEmail = pattern.matcher(binding.editTextEmail.getText().toString()).matches();
+            if (isValidEmail) {
+                inputEmail = binding.editTextEmail.getText().toString();
+                inputPassword = binding.editTextPassword.getText().toString();
+
+                final LoginResponse login = new LoginResponse(inputEmail,inputPassword);
+                Call<LoginResponse> call = RetrofitClient
+                        .getInstance()
+                        .getAppService()
+                        .login(login);
+                call.enqueue(new Callback<LoginResponse>() {
+                                 @Override
+                                 public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                                     if (response.body().getStatus().equals("ok")) {
+                                         Toast.makeText(LoginActivity.this, "Login successfully", Toast.LENGTH_LONG).show();
+                                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
+                                         finish();
+                                     }else{
+                                         Toast.makeText(LoginActivity.this, response.body().getData().getError(), Toast.LENGTH_LONG).show();
+                                     }
+                                 }
+
+                                 @Override
+                                 public void onFailure(Call<LoginResponse> call, Throwable t) {
+                                     Toast.makeText(LoginActivity.this, "Failed: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                                 }
+                             }
+                );
+            } else {
+                binding.editTextEmail.setError("Invalid email");
+            }
+            //startActivity(new Intent(getApplicationContext(), MainActivity.class)); // only startActivity line 51 - cmt by Viet Hoang
+        });
+    }
+}
