@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@color/colorMainBackground"
+    android:gravity="center"
+    >
+
+
+        <ImageView
+            style="@style/LogoImage"
+            android:layout_marginBottom="30dp"
+            ></ImageView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+
+            >
+            <TextView
+                style="@style/Title"
+                android:text="Register"
+                android:layout_marginBottom="12dp"
+                ></TextView>
+
+            <EditText
+                android:hint="Username"
+                style="@style/CredentialInput"
+                android:layout_marginBottom="12dp"></EditText>
+
+            <EditText
+                style="@style/CredentialInput"
+                android:inputType="textPassword"
+                android:layout_marginBottom="12dp"
+                android:hint="Password"></EditText>
+
+            <EditText
+                style="@style/CredentialInput"
+                android:inputType="textPassword"
+                android:hint="Confirm password"></EditText>
+
+            <Button
+                style="@style/GrayLink"
+                android:text="I have an account. Login?">
+            </Button>
+
+
+            <Button
+                style="@style/RoundedCornerButton"
+                android:layout_marginBottom="12dp"
+                android:text="REGISTER"></Button>
+
+
+
+
+    </LinearLayout>
+</LinearLayout>
