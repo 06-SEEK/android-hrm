@@ -96,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
             } else {
                 binding.editTextEmail.setError("Invalid email");
             }
-            //startActivity(new Intent(getApplicationContext(), MainActivity.class)); // only startActivity line 51 - cmt by Viet Hoang
+            //startActivity(new Intent(getApplicationContext(), MainActivity.class));
         });
     }
 }

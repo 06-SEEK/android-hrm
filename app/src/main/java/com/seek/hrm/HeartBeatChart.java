@@ -8,20 +8,19 @@ import android.view.TextureView;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
-class ChartDrawer {
+class HeartBeatChart {
     private  final TextureView chartTextureView;
     private final Paint paint = new Paint();
     private final Paint fillWhite = new Paint();
 
-    ChartDrawer(TextureView chartTextureView, int color) {
+    HeartBeatChart(TextureView chartTextureView, int color) {
         this.chartTextureView = chartTextureView;
-
 
         paint.setStyle(Paint.Style.STROKE);
 
-        paint.setColor(Color.WHITE);
+        paint.setColor(Color.GRAY);
         paint.setAntiAlias(true);
-        paint.setStrokeWidth(2);
+        paint.setStrokeWidth(3);
 
         fillWhite.setStyle(Paint.Style.FILL);
         fillWhite.setColor(color);

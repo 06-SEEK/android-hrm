@@ -16,7 +16,7 @@ import com.seek.hrm.Fragments.CameraService;
 public class OutputAnalyzer {
     private final Activity activity;
 
-    private final ChartDrawer chartDrawer;
+    private final HeartBeatChart HeartBeatChart;
 
     private MeasureStore store;
 
@@ -35,7 +35,7 @@ public class OutputAnalyzer {
 
     public OutputAnalyzer(Activity activity, TextureView graphTextureView, Handler mainHandler) {
         this.activity = activity;
-        this.chartDrawer = new ChartDrawer(graphTextureView,activity.getResources().getColor(R.color.colorGray));
+        this.HeartBeatChart = new HeartBeatChart(graphTextureView,activity.getResources().getColor(R.color.colorWhite));
         this.mainHandler = mainHandler;
     }
 
@@ -111,8 +111,8 @@ public class OutputAnalyzer {
                     }
 
                     // draw the chart on a separate thread.
-                    Thread chartDrawerThread = new Thread(() -> chartDrawer.draw(store.getStdValues()));
-                    chartDrawerThread.start();
+                    Thread HeartBeatChartThread = new Thread(() -> HeartBeatChart.draw(store.getStdValues()));
+                    HeartBeatChartThread.start();
                 });
                 thread.start();
             }
