@@ -11,19 +11,38 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#DBEDEF"
-            android:gravity="center"
+            android:gravity="center|top"
             android:orientation="vertical"
             android:paddingLeft="12dp"
             android:paddingRight="12dp">
 
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:srcCompat="@drawable/ic_launcher_foreground" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="100dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/login"
+                android:textSize="24dp"
+                tools:textAlignment="center" />
+
             <EditText
                 android:id="@+id/editTextEmail"
                 android:layout_width="match_parent"
-                android:layout_height="77dp"
-                android:backgroundTint="#2F80ED"
+                android:layout_height="56dp"
+                android:background="@drawable/rounded_corner_input_background"
                 android:ems="10"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
+                android:paddingLeft="12dp"
                 android:textColor="@color/colorWhite"
                 android:textColorHighlight="@color/colorRed"
                 android:textColorHint="@color/colorWhiteGray"
@@ -32,12 +51,13 @@
             <EditText
                 android:id="@+id/editTextPassword"
                 android:layout_width="match_parent"
-                android:layout_height="62dp"
+                android:layout_height="56dp"
                 android:layout_marginTop="8dp"
-                android:backgroundTint="#2F80ED"
+                android:background="@drawable/rounded_corner_input_background"
                 android:ems="10"
                 android:hint="Password"
                 android:inputType="textPassword"
+                android:paddingLeft="12dp"
                 android:textColor="#FFFFFF"
                 android:textColorHighlight="#4CAF50"
                 android:textColorHint="@color/colorWhiteGray" />
@@ -45,16 +65,23 @@
             <Button
                 android:id="@+id/buttonLogin"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/rounded_corner_blue_background"
                 android:backgroundTint="#2F80ED"
                 android:text="Log in"
                 android:textColor="#FFFFFF" />
 
             <Button
                 android:id="@+id/buttonRegister"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:text="Register" />
+                android:layout_width="384dp"
+                android:layout_height="56dp"
+
+                android:layout_marginTop="12dp"
+                android:background="@drawable/register_button_background"
+                android:text="Register"
+                tools:textColor="#F2994A" />
+
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -12,19 +12,39 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#DBEDEF"
-        android:gravity="center"
+        android:gravity="center|top"
         android:orientation="vertical"
         android:paddingLeft="12dp"
         android:paddingRight="12dp">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:srcCompat="@drawable/ic_launcher_foreground" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="100dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/register"
+            android:textAlignment="center"
+            android:textSize="24dp" />
 
         <EditText
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:backgroundTint="#2F80ED"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/rounded_corner_input_background"
             android:ems="10"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
+            android:paddingLeft="12dp"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorWhiteGray" />
 
@@ -32,10 +52,12 @@
             android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:backgroundTint="#2F80ED"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/rounded_corner_input_background"
             android:ems="10"
             android:hint="@string/password"
             android:inputType="textPassword"
+            android:paddingLeft="12dp"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorWhiteGray" />
 
@@ -43,10 +65,11 @@
             android:id="@+id/editTextConfirm"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:backgroundTint="#2F80ED"
+            android:background="@drawable/rounded_corner_input_background"
             android:ems="10"
             android:hint="@string/confirm_password"
             android:inputType="textPassword"
+            android:paddingLeft="12dp"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorWhiteGray" />
 
@@ -54,6 +77,8 @@
             android:id="@+id/buttonRegister"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/rounded_corner_blue_background"
             android:backgroundTint="#2F80ED"
             android:text="@string/register"
             android:textColor="@color/colorWhite" />
@@ -62,7 +87,11 @@
             android:id="@+id/buttonLogin"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="@string/login" />
+            android:background="@drawable/register_button_background"
+            android:text="@string/login"
+            android:textColor="#F2994A"
+            tools:layout_marginTop="24dp" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 
