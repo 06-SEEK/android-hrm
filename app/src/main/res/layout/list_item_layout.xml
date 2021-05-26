@@ -27,47 +27,48 @@
         android:id="@+id/textView_time"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:text="02/12/2020      15:40:12"
         android:gravity="center_vertical"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
+        android:text="02/12/2020      15:40:12"
+        android:textColor="@color/colorGray"
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@id/textView_result"
         app:layout_constraintStart_toEndOf="@+id/imageView_flag"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/colorWhite"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView_result"
         android:layout_width="80dp"
         android:layout_height="50dp"
-        android:text="75"
-        android:textSize="26dp"
         android:gravity="center_vertical"
-        android:textAlignment="viewEnd"
         android:paddingRight="6dp"
+        android:text="75"
+        android:textAlignment="viewEnd"
+        android:textColor="@color/colorGray"
+        android:textSize="26dp"
         android:textStyle="bold"
-        android:textColor="@color/colorWhite"
         app:layout_constraintEnd_toStartOf="@+id/textView_unit"
         app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/textView_unit"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:text="BPM"
-        android:textColor="@color/colorWhite"
         android:gravity="center"
+        android:text="BPM"
+        android:textColor="@color/colorGray"
         app:layout_constraintEnd_toStartOf="@+id/deleteBtn"
         app:layout_constraintTop_toTopOf="parent" />
+
     <ImageButton
         android:id="@+id/deleteBtn"
-        android:src="@drawable/ic_baseline_delete_outline_24"
-        android:background="@color/colorGray"
-        android:layout_height="50dp"
         android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="#DBEDEF"
         android:gravity="center_horizontal|top"
+        android:src="@drawable/ic_baseline_delete_outline_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

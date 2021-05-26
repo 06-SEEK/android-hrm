@@ -21,17 +21,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                app:srcCompat="@drawable/ic_launcher_foreground" />
+                app:srcCompat="@drawable/ic_launcher_foreground"
+                android:contentDescription="@string/todo" />
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="100dp"
+                android:layout_marginBottom="50dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="@string/login"
-                android:textSize="24dp"
+                android:textSize="24sp"
                 tools:textAlignment="center" />
 
             <EditText
@@ -40,13 +41,15 @@
                 android:layout_height="56dp"
                 android:background="@drawable/rounded_corner_input_background"
                 android:ems="10"
-                android:hint="Email"
+                android:hint="@string/email"
                 android:inputType="textEmailAddress"
                 android:paddingLeft="12dp"
+                android:paddingRight="12dp"
                 android:textColor="@color/colorWhite"
                 android:textColorHighlight="@color/colorRed"
                 android:textColorHint="@color/colorWhiteGray"
-                android:textColorLink="@color/colorRed" />
+                android:textColorLink="@color/colorRed"
+                android:autofillHints="" />
 
             <EditText
                 android:id="@+id/editTextPassword"
@@ -55,12 +58,13 @@
                 android:layout_marginTop="8dp"
                 android:background="@drawable/rounded_corner_input_background"
                 android:ems="10"
-                android:hint="Password"
+                android:hint="@string/password"
                 android:inputType="textPassword"
-                android:paddingLeft="12dp"
+                android:paddingStart="12dp"
                 android:textColor="#FFFFFF"
                 android:textColorHighlight="#4CAF50"
-                android:textColorHint="@color/colorWhiteGray" />
+                android:textColorHint="@color/colorWhiteGray"
+                android:autofillHints="" />
 
             <Button
                 android:id="@+id/buttonLogin"
@@ -69,7 +73,7 @@
                 android:layout_marginTop="12dp"
                 android:background="@drawable/rounded_corner_blue_background"
                 android:backgroundTint="#2F80ED"
-                android:text="Log in"
+                android:text="@string/log_in"
                 android:textColor="#FFFFFF" />
 
             <Button
@@ -79,7 +83,7 @@
 
                 android:layout_marginTop="12dp"
                 android:background="@drawable/register_button_background"
-                android:text="Register"
+                android:text="@string/register"
                 tools:textColor="#F2994A" />
 
         </LinearLayout>
