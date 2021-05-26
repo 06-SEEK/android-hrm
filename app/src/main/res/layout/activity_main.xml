@@ -12,40 +12,39 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBar"
+            style="@style/Widget.MaterialComponents.Toolbar.PrimarySurface"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorBlack"
-            app:title="Đo nhịp tim"
+            android:background="#004F84"
             app:menu="@menu/menu"
-            app:titleTextColor="@color/colorWhite"
-            app:navigationIcon="@drawable/ic_heart_red_24dp"
-            style="@style/Widget.MaterialComponents.Toolbar.PrimarySurface" />
+            app:navigationIcon="@drawable/ic_baseline_menu_24"
+            app:title="SEEK HRM"
+            app:titleTextColor="@color/colorWhite" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
-            android:layout_height="50dp"
             android:layout_width="match_parent"
-            android:background="@color/colorBlack"
+            android:layout_height="50dp"
+            android:background="#004F84"
             app:tabTextColor="@color/colorWhite">
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/help"
-                />
+                android:text="@string/help" />
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/measure"
-                />
+                android:text="@string/measure" />
+
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/history"
-                />
+                android:text="@string/history" />
 
         </com.google.android.material.tabs.TabLayout>
 
