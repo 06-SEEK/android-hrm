@@ -10,7 +10,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:context=".MainActivity"
+            tools:context=".Activities.MainActivity"
             tools:showIn="@layout/activity_main"
             android:background="#17202A"
             >
@@ -25,17 +25,18 @@
                     android:layout_height="@dimen/camera_view_height"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
                 <TextView
                     android:id="@+id/measure"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginRight="50dp"
-                    android:text="CLICK TO MEASURE"
-                    android:textColor="@color/colorWhite"
                     android:gravity="center"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="TOUCH TO START"
+                    android:textColor="@color/colorWhite"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
 
                     />
 
@@ -91,28 +92,26 @@
                         <TextView
                             android:id="@+id/textView"
                             android:layout_width="200dp"
-                            android:layout_height="70dp"
+                            android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:textAlignment="gravity"
                             android:text="00"
-                            android:textSize="60sp"
-                            android:textStyle="bold"
+                            android:textAlignment="gravity"
                             android:textColor="@color/colorWhite"
-                            />
+                            android:textSize="70sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textView2"
                             android:layout_width="200dp"
                             android:layout_height="40dp"
                             android:layout_marginTop="15dp"
-                            android:gravity="center"
-                            android:textAlignment="gravity"
-                            android:text="BPM"
                             android:layout_marginBottom="15dp"
-                            android:textSize="30sp"
-                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:text="BPM"
+                            android:textAlignment="gravity"
                             android:textColor="@color/colorWhite"
-                            />
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 

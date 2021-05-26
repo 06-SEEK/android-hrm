@@ -1,0 +1,36 @@
+package com.seek.hrm.Parsing;
+
+import com.google.gson.annotations.SerializedName;
+
+public class LoginResponse {
+    @SerializedName( "status" )
+    private String status;
+    @SerializedName( "data" )
+    private DataResponse data;
+    @SerializedName( "email" )
+    private String email;
+    @SerializedName( "password" )
+    private String  password;
+
+
+    public LoginResponse(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public DataResponse getData() {
+        return data;
+    }
+
+    public void setData(DataResponse data) {
+        this.data = data;
+    }
+}

@@ -5,7 +5,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".LoginActivity">
+        tools:context=".Activities.LoginActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,7 +45,7 @@
             <Button
                 android:id="@+id/buttonLogin"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:backgroundTint="@color/colorRed"
                 android:text="Log in"
                 android:textColor="#FFFFFF" />
@@ -53,7 +53,7 @@
             <Button
                 android:id="@+id/buttonRegister"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:text="Register" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
