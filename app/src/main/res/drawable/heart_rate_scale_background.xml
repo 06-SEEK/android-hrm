@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background"
+        android:gravity="center_vertical|fill_horizontal">
+        <vector
+            android:height="100dp"
+            android:width="100dp"
+            android:viewportHeight="1" android:viewportWidth="24"
+             >
+            <path android:fillColor="#63BF38" android:pathData="M0,0 h8 v1 L0,1 z"/>
+            <path android:fillColor="#F6E225" android:pathData="M8,0 h8 v1 L8,1 z"/>
+            <path android:fillColor="#FD7A1B" android:pathData="M16,0 h8 v1 L16,1 z"/>
+
+        </vector>
+
+    </item>
+
+</layer-list>
