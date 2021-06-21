@@ -10,6 +10,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.util.regex.Pattern;
@@ -18,6 +19,7 @@ import com.seek.hrm.R;
 import com.seek.hrm.databinding.ActivityLoginBinding;
 import com.seek.hrm.Parsing.LoginResponse;
 import com.seek.hrm.Network.RetrofitClient;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -62,14 +64,14 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         binding.buttonLogin.setOnClickListener(view -> {
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+//            startActivity(new Intent(getApplicationContext(), MainActivity.class));
             boolean isValidEmail = pattern.matcher(binding.editTextEmail.getText().toString()).matches();
 
             if (isValidEmail) {
                 inputEmail = binding.editTextEmail.getText().toString();
                 inputPassword = binding.editTextPassword.getText().toString();
 
-                final LoginResponse login = new LoginResponse(inputEmail,inputPassword);
+                final LoginResponse login = new LoginResponse(inputEmail, inputPassword);
                 Call<LoginResponse> call = RetrofitClient
                         .getInstance()
                         .getAppService()
@@ -77,13 +79,15 @@ public class LoginActivity extends AppCompatActivity {
                 call.enqueue(new Callback<LoginResponse>() {
                                  @Override
                                  public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                                     if (response.body().getStatus().equals("ok")) {
+                                     if (response.isSuccessful()) {
+                                         Log.d("status", String.valueOf(response.code()));
                                          Toast.makeText(LoginActivity.this, "Login successfully", Toast.LENGTH_LONG).show();
                                          startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
                                          finish();
-                                     }else{
-                                         Toast.makeText(LoginActivity.this, response.body().getData().getError(), Toast.LENGTH_LONG).show();
+                                     } else {
+//                                         Log.d("status", response.body().getMessage().toString());
+                                         Toast.makeText(LoginActivity.this, "Invalid credentials", Toast.LENGTH_LONG).show();
                                      }
                                  }
 
@@ -93,10 +97,12 @@ public class LoginActivity extends AppCompatActivity {
                                  }
                              }
                 );
+
+//                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
             } else {
                 binding.editTextEmail.setError("Invalid email");
             }
-            //startActivity(new Intent(getApplicationContext(), MainActivity.class));
         });
     }
 }

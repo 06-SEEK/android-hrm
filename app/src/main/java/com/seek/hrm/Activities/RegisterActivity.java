@@ -99,7 +99,7 @@ public class RegisterActivity extends AppCompatActivity {
                                  @Override
                                  public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
                                      Log.d("Body", "Body");
-                                     if (response.body().getStatus().equals("ok")) {
+                                     if (response.isSuccessful()) {
                                          Toast.makeText(getApplicationContext(), "Register successfully", Toast.LENGTH_LONG).show();
                                          try {
                                              JSONObject responseObject = new JSONObject(response.body().getData().toString());
@@ -110,9 +110,9 @@ public class RegisterActivity extends AppCompatActivity {
                                              editor.apply();
                                              //Read token from local storage
                                              SharedPreferences prefs = getSharedPreferences(USER_TOKEN, MODE_PRIVATE);
-                                             String retreivedToken = prefs.getString("token", "none");
-                                             Log.d("TOKEN", retreivedToken);
-                                             Toast.makeText(getApplicationContext(), "Successnfully",Toast.LENGTH_LONG).show();
+                                             String retrievedToken = prefs.getString("token", "none");
+                                             Log.d("TOKEN", retrievedToken);
+                                             Toast.makeText(getApplicationContext(), "Successfully",Toast.LENGTH_LONG).show();
                                          } catch (JSONException e) {
                                              e.printStackTrace();
                                          }

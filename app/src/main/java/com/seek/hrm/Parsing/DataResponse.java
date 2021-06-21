@@ -3,17 +3,19 @@ package com.seek.hrm.Parsing;
 import com.google.gson.annotations.SerializedName;
 
 public class DataResponse {
-    @SerializedName("_id")
-    private String userId;
+    @SerializedName("email")
+    private String email;
     @SerializedName("error")
     private String error;
+    @SerializedName("token")
+    private String token;
 
-    public String getUserId() {
-        return userId;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getError() {

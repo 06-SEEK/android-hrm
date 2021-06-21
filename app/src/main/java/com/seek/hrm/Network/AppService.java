@@ -7,12 +7,12 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface AppService {
-    @POST("/user/register")
+    @POST("api/users/register")
     Call<RegisterResponse> createUser (
           @Body RegisterResponse register
     );
 
-    @POST("/user/login")
+    @POST("api/users/login")
     Call<LoginResponse> login (
            @Body LoginResponse login
     );

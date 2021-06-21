@@ -4,7 +4,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitClient {
     private  Retrofit retrofit;
     private  static RetrofitClient instance;
-    private static final String BASE_URL = "https://api-hbm.herokuapp.com/";// http://192.168.43.76:3000
+    private static final String BASE_URL = "https://apis-hrm.herokuapp.com/";// http://192.168.43.76:3000
     private  RetrofitClient() {
         retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
