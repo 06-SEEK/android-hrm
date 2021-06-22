@@ -8,10 +8,10 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 
 public class Adapter  extends FragmentPagerAdapter {
-    private String tabsList [] = {"MEASURE","HISTORY"};
+    private String tabsList [] = {"HELP","MEASURE","HISTORY"};
     private HistoryMeasureFragment historyMeasureFragment;
     private MeasureFragment measureFragment;
-
+    private HelpFragment helpFragment;
     public Adapter(@NonNull FragmentManager fm) {
         super(fm);
     }
@@ -20,10 +20,13 @@ public class Adapter  extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position){
-            case  0:
+            case 0:
+                helpFragment = new HelpFragment();
+                return helpFragment;
+            case 1:
                 measureFragment = new MeasureFragment();
                 return measureFragment;
-            case 1:
+            case 2:
                 historyMeasureFragment = new HistoryMeasureFragment();
                 return historyMeasureFragment;
             default:
@@ -41,9 +44,12 @@ public class Adapter  extends FragmentPagerAdapter {
         String title = "";
         switch (position){
             case 0:
-                title = "MEASURE";
+                title = "HELP";
                 break;
             case 1:
+                title = "MEASURE";
+                break;
+            case 2:
                 title = "HISTORY";
                 break;
         }

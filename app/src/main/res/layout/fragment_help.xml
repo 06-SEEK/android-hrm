@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorMainBackground"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:text="@string/start_you_measurement"
+                android:textColor="@color/colorPrimary"
+                android:textSize="30dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/measurement_help_1"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15dp"
+
+
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/measurement_help" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/measurement_help_2"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15dp"/>
+
+
+            <TextView
+                style="@style/heartRateZoneTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#D6D6D6"
+                android:layout_marginTop="40dp"
+                android:text="@string/heart_rate_zone_1" />
+
+            <TextView
+                style="@style/heartRateZoneDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/heart_rate_zone_1_detail" />
+
+            <TextView
+                style="@style/heartRateZoneTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#03A9F4"
+                android:text="@string/heart_rate_zone_2" />
+
+            <TextView
+                style="@style/heartRateZoneDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/heart_rate_zone_2_detail" />
+
+
+            <TextView
+                style="@style/heartRateZoneTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#8BC34A"
+                android:text="@string/heart_rate_zone_3" />
+
+            <TextView
+                style="@style/heartRateZoneDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/heart_rate_zone_3_detail" />
+            '
+
+            <TextView
+                style="@style/heartRateZoneTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFC107"
+                android:text="@string/heart_rate_zone_4" />
+
+            <TextView
+                style="@style/heartRateZoneDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/heart_rate_zone_4_detail" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/heart_rate_zone_5"
+                style="@style/heartRateZoneTitle"
+                android:background="#E91E63"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/heart_rate_zone_5_detail"
+                style="@style/heartRateZoneDetail"
+                />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

@@ -41,4 +41,19 @@
         <item quantity="one">%2.0f</item>
         <item quantity="other">%2.0f</item>
     </plurals>
+
+    <string name="start_you_measurement">How to measure my heart?</string>
+    <string name="measurement_help_1">Heart Rate App measures your heart rate analyzing color changes on the tip of your finger</string>
+    <string name="measurement_help_2">    Gently place the tip of your finger on the camera so it completely covers the lens. It is not necessary to cover the flash. Hold your phone steady.</string>
+    <string name="heart_rate_zone_1">Heart rate zones 1: 50–60% of maximum heart rate</string>
+    <string name="heart_rate_zone_1_detail">This is the very low intensity zone. Training at this intensity will boost your recovery and get you ready to train in the higher heart rate zones. To train at this intensity, pick a form of exercise that allows you to easily control your heart rate, such as walking or cycling.</string>
+    <string name="heart_rate_zone_2">Heart rate zones 2: 60–70% of maximum heart rate</string>
+    <string name="heart_rate_zone_2_detail">Exercising in heart rate zone 2 feels light and you should be able to go on for a long time at this intensity. This is the zone that improves your general endurance: your body will get better at oxidizing – burning – fat and your muscular fitness will increase along with your capillary density. Training in heart rate zone 2 is an essential part of every exercise program. Keep at it and you’ll reap the benefits later.</string>
+    <string name="heart_rate_zone_3">Heart rate zones 3: 70–80% of maximum heart rate</string>
+    <string name="heart_rate_zone_3_detail">Working out in heart rate zone 3 is especially effective for improving the efficiency of blood circulation in the heart and skeletal muscles. This is the zone in which that pesky lactic acid starts building up in your bloodstream. Training in this HR zone will make moderate efforts easier and improve your efficiency.</string>
+    <string name="heart_rate_zone_4">Heart rate zones 4: 80–90% of maximum heart rate</string>
+    <string name="heart_rate_zone_4_detail">Heart rate zone 4 is where the going gets tough. You’ll be breathing hard and working aerobically. If you train at this intensity, you’ll improve your speed endurance. Your body will get better at using carbohydrates for energy and you’ll be able to withstand higher levels of lactic acid in your blood for longer.</string>
+    <string name="heart_rate_zone_5">Heart rate zones 5: 90–100% of maximum heart rate</string>
+    <string name="heart_rate_zone_5_detail">Heart rate zone 5 is your maximal effort. Your heart and your blood and respiratory system will be working at their maximal capacity. Lactic acid will build up in your blood and after a few minutes you won’t be able to continue at this intensity.If you’re just starting out or have only been training for some time, you probably won’t have to train at this intensity. If you’re a professional athlete, look into incorporating interval training into your training plan for peak performance.</string>
+
 </resources>
