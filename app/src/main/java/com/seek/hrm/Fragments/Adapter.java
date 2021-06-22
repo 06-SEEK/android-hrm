@@ -8,9 +8,8 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 
 public class Adapter  extends FragmentPagerAdapter {
-    private String tabsList [] = {"HELP","MEASURE","HISTORY"};
+    private String tabsList [] = {"MEASURE","HISTORY"};
     private HistoryMeasureFragment historyMeasureFragment;
-    private HelpFragment helpFragment;
     private MeasureFragment measureFragment;
 
     public Adapter(@NonNull FragmentManager fm) {
@@ -20,17 +19,16 @@ public class Adapter  extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        if(position==0){
-            helpFragment = new HelpFragment();
-            return helpFragment;
-        }else if(position==1){
-            measureFragment = new MeasureFragment();
-            return measureFragment;
-        }else if(position==2){
-            historyMeasureFragment = new HistoryMeasureFragment();
-            return historyMeasureFragment;
+        switch (position){
+            case  0:
+                measureFragment = new MeasureFragment();
+                return measureFragment;
+            case 1:
+                historyMeasureFragment = new HistoryMeasureFragment();
+                return historyMeasureFragment;
+            default:
+                return null;
         }
-        return null;
     }
 
     @Override
@@ -43,12 +41,9 @@ public class Adapter  extends FragmentPagerAdapter {
         String title = "";
         switch (position){
             case 0:
-                title = "HELP";
-                break;
-            case 1:
                 title = "MEASURE";
                 break;
-            case 2:
+            case 1:
                 title = "HISTORY";
                 break;
         }
