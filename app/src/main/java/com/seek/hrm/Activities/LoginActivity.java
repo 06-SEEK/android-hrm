@@ -42,27 +42,27 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
         });
 
-//        binding.editTextEmail.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                boolean isValidEmail = pattern.matcher(charSequence).matches();
-//                if (isValidEmail == true) {
-//
-//                } else {
-//                    binding.editTextEmail.setError("Invalid email");
-//                }
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable editable) {
-//
-//            }
-//        });
+        binding.editTextEmail.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                boolean isValidEmail = pattern.matcher(charSequence).matches();
+                if (isValidEmail == true) {
+
+                } else {
+                    binding.editTextEmail.setError("Invalid email");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
         binding.buttonLogin.setOnClickListener(view -> {
 //            startActivity(new Intent(getApplicationContext(), MainActivity.class));
@@ -72,8 +72,6 @@ public class LoginActivity extends AppCompatActivity {
                 inputEmail = binding.editTextEmail.getText().toString();
                 inputPassword = binding.editTextPassword.getText().toString();
 
-                inputEmail = "hoang2@gmail.com";
-                inputPassword="123123";
                 final LoginResponse login = new LoginResponse(inputEmail, inputPassword);
                 Call<LoginResponse> call = RetrofitClient
                         .getInstance()

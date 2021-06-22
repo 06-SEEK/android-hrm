@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -79,28 +80,33 @@ public class HistoryMeasureFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        HistoryService.getHistory((success, data) -> {
-            if (success){
-                CustomListAdapter adapter = new CustomListAdapter(data,getActivity());
-                historyMeasureList = data;
-                historyList.setAdapter(adapter);
-                cartesian = AnyChart.column();
-                chartDataUpdate();
-                anyChartView.setChart(cartesian);
-            }
-        });
+        getHistory();
     }
 
     //    SQLiteDatabase createDatabase(){
 //        return  getContext().openOrCreateDatabase("measureapp.db",MODE_PRIVATE,null);
 //    }
 
+    private void getHistory(){
 
-//    @Override
-//    public void setUserVisibleHint(boolean isVisibleToUser) {
-//        super.setUserVisibleHint(isVisibleToUser);
-//        if(isVisibleToUser) {
-//
+        HistoryService.getHistory((success, data) -> {
+            if (success){
+                historyMeasureList = data;
+                CustomListAdapter adapter = new CustomListAdapter(historyMeasureList,getActivity());
+                historyList.setAdapter(adapter);
+                cartesian = AnyChart.column();
+                anyChartView.setChart(cartesian);
+                chartDataUpdate();
+            }
+        });
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if(isVisibleToUser) {
+            getHistory();
+
 //            SQLiteHelper db = new SQLiteHelper(getContext());
 //            try {
 //                historyMeasureList = db.get(15);//lấy tối đa 15 kết quả để in list
@@ -120,9 +126,9 @@ public class HistoryMeasureFragment extends Fragment {
 //            CustomListAdapter adapter = new CustomListAdapter(historyMeasureList,getActivity());
 //
 //            historyList.setAdapter(adapter);
-//
-//        }
-//    }
+
+        }
+    }
     public BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
