@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.SurfaceTexture;
 import android.os.Bundle;
 
+import com.seek.hrm.Network.IResultCallback;
 import com.seek.hrm.OutputAnalyzer;
 
 import android.os.Handler;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,6 +33,7 @@ import java.util.Calendar;
 import com.seek.hrm.R;
 import com.seek.hrm.POJO.HistoryMeasure;
 import com.seek.hrm.Utils.SQLiteHelper;
+import com.seek.hrm.api.HistoryService;
 
 import static com.seek.hrm.Activities.MainActivity.MESSAGE_PROGRESS_REALTIME;
 import static com.seek.hrm.Activities.MainActivity.MESSAGE_UPDATE_FINAL;
@@ -133,9 +136,15 @@ public class MeasureFragment extends Fragment {
         builder.setTitle("MEASURE RESULT");
         builder.setMessage("Result: " +result +" BPM. Do you want to save measurement result");
         builder.setPositiveButton("Save", (dialog, which) -> {
-            SQLiteHelper db = new SQLiteHelper(getContext());
-            db.addResult( new HistoryMeasure( Calendar.getInstance().getTime(),Integer.parseInt( result)));
+//            SQLiteHelper db = new SQLiteHelper(getContext());
+//            db.addResult( new HistoryMeasure( Calendar.getInstance().getTime(),Integer.parseInt( result)));
             //API ADD RESULT MEASUREMENT, HERE !!!!
+            HistoryService.createHistory(Integer.parseInt(result), success -> {
+                if (success){
+                    Toast.makeText(getActivity(), "Save successfully!", Toast.LENGTH_SHORT).show();
+                }
+            });
+
         });
         builder.setNegativeButton("Cancel",(dialog, which) -> {
 

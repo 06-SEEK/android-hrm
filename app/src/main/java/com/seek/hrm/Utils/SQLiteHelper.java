@@ -66,7 +66,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(COLUMN_TIME, sdf.format(historyMeasure.getTime()));
+        values.put(COLUMN_TIME, sdf.format(historyMeasure.getCreatedAt()));
         values.put(COLUMN_RESULT, historyMeasure.getResult());
 
         // Inserting Row
@@ -85,7 +85,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             int id = c.getInt(0);
             Date time = sdf.parse(c.getString(1));
             int result = Integer.parseInt(c.getString(2));
-            historyMeasureList.add(new HistoryMeasure(id,time,result));
+            //historyMeasureList.add(new HistoryMeasure(id,time,result));
             c.moveToPrevious();
             if(--size==0) break;
         }

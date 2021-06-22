@@ -66,7 +66,7 @@ public class CustomListAdapter extends BaseAdapter {
 
 
         HistoryMeasure historyMeasure = this.listData.get(position);
-        holder.time.setText(formatTime(historyMeasure.getTime()));
+        holder.time.setText(formatTime(historyMeasure.getCreatedAt()));
         holder.measureResult.setText(Integer.toString(historyMeasure.getResult()));
         holder.deleteBtn.setOnClickListener(v ->
             showAlertDelete(historyMeasure)
@@ -77,20 +77,20 @@ public class CustomListAdapter extends BaseAdapter {
     void showAlertDelete(HistoryMeasure historyMeasure){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setMessage("Do you want to delete measurement result: "+ historyMeasure.getResult() +" at: "+
-                formatTime(historyMeasure.getTime()))
+                formatTime(historyMeasure.getCreatedAt()))
                 .setPositiveButton("OK", (dialog, which) -> {
 
-                    SQLiteHelper db = new SQLiteHelper(context);
-
-                    if(db.delete(historyMeasure.getUser_id())){
-                        HistoryMeasure.deleteItemById(this.listData,historyMeasure.getUser_id());
-                        Toast.makeText(context, "DELETE SUCCESSFULLY", Toast.LENGTH_LONG).show();
-                            updateData(historyMeasure.getUser_id());
-                        //API DELETE RESULT MEASUREMENT, HERE !!!!
-
-                    }else{
-                        Toast.makeText(context, "DELETE FAILED", Toast.LENGTH_LONG).show();
-                    }
+//                    SQLiteHelper db = new SQLiteHelper(context);
+//
+//                    if(db.delete(historyMeasure.getUser_id())){
+//                        HistoryMeasure.deleteItemById(this.listData,historyMeasure.getUser_id());
+//                        Toast.makeText(context, "DELETE SUCCESSFULLY", Toast.LENGTH_LONG).show();
+//                            updateData(historyMeasure.getUser_id());
+//                        //API DELETE RESULT MEASUREMENT, HERE !!!!
+//
+//                    }else{
+//                        Toast.makeText(context, "DELETE FAILED", Toast.LENGTH_LONG).show();
+//                    }
 
 
 

@@ -102,20 +102,27 @@ public class RegisterActivity extends AppCompatActivity {
                                      if (response.isSuccessful()) {
                                          Toast.makeText(getApplicationContext(), "Register successfully", Toast.LENGTH_LONG).show();
                                          try {
-                                             JSONObject responseObject = new JSONObject(response.body().getData().toString());
-                                             String token = (String) responseObject.getString("token");
-                                             //Save token to local storage
-                                             SharedPreferences.Editor editor = getSharedPreferences(USER_TOKEN, MODE_PRIVATE).edit();
-                                             editor.putString("token", token);
-                                             editor.apply();
-                                             //Read token from local storage
-                                             SharedPreferences prefs = getSharedPreferences(USER_TOKEN, MODE_PRIVATE);
-                                             String retrievedToken = prefs.getString("token", "none");
-                                             Log.d("TOKEN", retrievedToken);
-                                             Toast.makeText(getApplicationContext(), "Successfully",Toast.LENGTH_LONG).show();
-                                         } catch (JSONException e) {
+                                             Thread.sleep(1000);
+                                             startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+
+                                         } catch (InterruptedException e) {
                                              e.printStackTrace();
                                          }
+//                                         try {
+//                                             JSONObject responseObject = new JSONObject(response.body().getData().toString());
+//                                             String token = (String) responseObject.getString("token");
+//                                             //Save token to local storage
+//                                             SharedPreferences.Editor editor = getSharedPreferences(USER_TOKEN, MODE_PRIVATE).edit();
+//                                             editor.putString("token", token);
+//                                             editor.apply();
+//                                             //Read token from local storage
+//                                             SharedPreferences prefs = getSharedPreferences(USER_TOKEN, MODE_PRIVATE);
+//                                             String retrievedToken = prefs.getString("token", "none");
+//                                             Log.d("TOKEN", retrievedToken);
+//                                             Toast.makeText(getApplicationContext(), "Successfully",Toast.LENGTH_LONG).show();
+//                                         } catch (JSONException e) {
+//                                             e.printStackTrace();
+//                                         }
 
                                      } else {
                                          Toast.makeText(RegisterActivity.this, "Email is already taken", Toast.LENGTH_SHORT).show();

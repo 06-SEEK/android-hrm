@@ -7,38 +7,35 @@ import java.util.Iterator;
 import java.util.List;
 
 public class HistoryMeasure {
-    @SerializedName( "user_id" )
-    private int user_id;
+    @SerializedName( "_id" )
+    private String id;
+    @SerializedName( "user" )
+    private String user;
     @SerializedName( "create_at" )
     private Date time;
     @SerializedName( "result" )
     private int result;
+    @SerializedName( "createdAt" )
+    private Date createdAt;
+    @SerializedName( "updatedAt" )
+    private Date updatedAt;
 
-    public HistoryMeasure(int id, Date time, int measureResult) {
-        this.user_id = id;
-        this.time = time;
-        this.result = measureResult;
-    }
-    public HistoryMeasure(Date time, int measureResult) {
-        this.time = time;
-        this.result = measureResult;
+    public String getId() {
+        return id;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public String getUser() {
+        return user;
     }
 
-    public Date getTime() {
-        return time;
+    public void setUser(String user) {
+        this.user = user;
     }
 
-    public void setTime(Date time) {
-        this.time = time;
-    }
 
     public int getResult() {
         return result;
@@ -48,17 +45,33 @@ public class HistoryMeasure {
         this.result = result;
     }
 
-    static public void deleteItemById(List<HistoryMeasure> list, int Id){
-        Iterator itr = list.iterator();
-        while (itr.hasNext())
-        {
-            HistoryMeasure x = (HistoryMeasure)itr.next();
-            if (x.getUser_id() == Id){
-                itr.remove();
-                return;
-            }
-
-        }
-
+    public Date getCreatedAt() {
+        return createdAt;
     }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+//    static public void deleteItemById(List<HistoryMeasure> list, int Id){
+//        Iterator itr = list.iterator();
+//        while (itr.hasNext())
+//        {
+//            HistoryMeasure x = (HistoryMeasure)itr.next();
+//            if (x.getUser() == Id){
+//                itr.remove();
+//                return;
+//            }
+//
+//        }
+//
+//    }
 }

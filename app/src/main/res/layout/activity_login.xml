@@ -45,7 +45,6 @@
                 android:inputType="textEmailAddress"
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
-                android:textColor="@color/colorWhite"
                 android:textColorHighlight="@color/colorRed"
                 android:textColorHint="@color/colorWhiteGray"
                 android:textColorLink="@color/colorRed"
@@ -61,7 +60,6 @@
                 android:hint="@string/password"
                 android:inputType="textPassword"
                 android:paddingStart="12dp"
-                android:textColor="#FFFFFF"
                 android:textColorHighlight="#4CAF50"
                 android:textColorHint="@color/colorWhiteGray"
                 android:autofillHints="" />

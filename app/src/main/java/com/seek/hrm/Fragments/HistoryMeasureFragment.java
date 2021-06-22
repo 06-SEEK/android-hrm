@@ -28,6 +28,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.seek.hrm.Network.IDataResultCallback;
 import com.seek.hrm.R;
 import com.seek.hrm.Utils.CustomListAdapter;
 import com.seek.hrm.POJO.HistoryMeasure;
@@ -35,6 +36,7 @@ import com.seek.hrm.Utils.SQLiteHelper;
 import com.anychart.enums.Anchor;
 import com.anychart.enums.HoverMode;
 import com.anychart.enums.TooltipPositionMode;
+import com.seek.hrm.api.HistoryService;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -48,7 +50,7 @@ public class HistoryMeasureFragment extends Fragment {
     private View rootView;
 
     void init(){
-        createDatabase();
+       // createDatabase();
         historyMeasureList=new ArrayList<>();
         historyList = rootView.findViewById(R.id.history_list);
         distribute = rootView.findViewById(R.id.distribute);
@@ -65,56 +67,68 @@ public class HistoryMeasureFragment extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         rootView = inflater.inflate(R.layout.fragment_history_measurement,container,false);
         init();
-        SQLiteHelper db = new SQLiteHelper(getContext());
-        try {
-            historyMeasureList = db.get(15);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        cartesian = AnyChart.column();
-        chartDataUpdate();
-        anyChartView.setChart(cartesian);
+//        SQLiteHelper db = new SQLiteHelper(getContext());
+//        try {
+//            historyMeasureList = db.get(15);
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
         return rootView;
     }
-    SQLiteDatabase createDatabase(){
-        return  getContext().openOrCreateDatabase("measureapp.db",MODE_PRIVATE,null);
-    }
-
 
     @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if(isVisibleToUser) {
-
-            SQLiteHelper db = new SQLiteHelper(getContext());
-            try {
-                historyMeasureList = db.get(15);//lấy tối đa 15 kết quả để in list
-                distribute.setText(getDisribute());//Thống kê
-                if(historyMeasureList.size()>7){//Lấy tối đa 7 kết quả cuối để vẽ chart
-                    //chart(historyMeasureList.subList(0,6));
-                    chartDataUpdate();
-                }else{
-                    //chart(historyMeasureList);
-                    chartDataUpdate();
-                }
-                //Tính thống kê
-
-            } catch (ParseException e) {
-                e.printStackTrace();
+    public void onResume() {
+        super.onResume();
+        HistoryService.getHistory((success, data) -> {
+            if (success){
+                CustomListAdapter adapter = new CustomListAdapter(data,getActivity());
+                historyMeasureList = data;
+                historyList.setAdapter(adapter);
+                cartesian = AnyChart.column();
+                chartDataUpdate();
+                anyChartView.setChart(cartesian);
             }
-            CustomListAdapter adapter = new CustomListAdapter(historyMeasureList,getActivity());
-
-            historyList.setAdapter(adapter);
-
-        }
+        });
     }
 
+    //    SQLiteDatabase createDatabase(){
+//        return  getContext().openOrCreateDatabase("measureapp.db",MODE_PRIVATE,null);
+//    }
+
+
+//    @Override
+//    public void setUserVisibleHint(boolean isVisibleToUser) {
+//        super.setUserVisibleHint(isVisibleToUser);
+//        if(isVisibleToUser) {
+//
+//            SQLiteHelper db = new SQLiteHelper(getContext());
+//            try {
+//                historyMeasureList = db.get(15);//lấy tối đa 15 kết quả để in list
+//                distribute.setText(getDisribute());//Thống kê
+//                if(historyMeasureList.size()>7){//Lấy tối đa 7 kết quả cuối để vẽ chart
+//                    //chart(historyMeasureList.subList(0,6));
+//                    chartDataUpdate();
+//                }else{
+//                    //chart(historyMeasureList);
+//                    chartDataUpdate();
+//                }
+//                //Tính thống kê
+//
+//            } catch (ParseException e) {
+//                e.printStackTrace();
+//            }
+//            CustomListAdapter adapter = new CustomListAdapter(historyMeasureList,getActivity());
+//
+//            historyList.setAdapter(adapter);
+//
+//        }
+//    }
     public BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             // Get extra data included in the Intent
             int resultId = intent.getIntExtra("result",-1);
-            HistoryMeasure.deleteItemById(historyMeasureList,resultId);
+//            HistoryMeasure.deleteItemById(historyMeasureList,resultId);
             distribute.setText(getDisribute());
             chartDataUpdate();
         }
@@ -141,12 +155,12 @@ public class HistoryMeasureFragment extends Fragment {
         List<DataEntry> data = new ArrayList<>();
         if(historyMeasureList.size()>10){
             for (int i = historyMeasureList.size()-10;i<historyMeasureList.size();i++) {
-                data.add(new ValueDataEntry(CustomListAdapter.formatShortTime(historyMeasureList.get(i).getTime())
+                data.add(new ValueDataEntry(CustomListAdapter.formatShortTime(historyMeasureList.get(i).getCreatedAt())
                         ,historyMeasureList.get(i).getResult()));
             }
         }else{
             for (int i = 0;i<historyMeasureList.size();i++) {
-                data.add(new ValueDataEntry(CustomListAdapter.formatShortTime(historyMeasureList.get(i).getTime())
+                data.add(new ValueDataEntry(CustomListAdapter.formatShortTime(historyMeasureList.get(i).getCreatedAt())
                         ,historyMeasureList.get(i).getResult()));
             }
         }

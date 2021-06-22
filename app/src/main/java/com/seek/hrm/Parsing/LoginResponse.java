@@ -41,4 +41,8 @@ public class LoginResponse {
     public String getMessage() {
         return message;
     }
+
+    public String getBearerToken(){
+        return "Bearer "+ token;
+    }
 }
