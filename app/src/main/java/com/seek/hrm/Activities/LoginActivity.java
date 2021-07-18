@@ -20,6 +20,7 @@ import com.seek.hrm.Session.LoginSession;
 import com.seek.hrm.databinding.ActivityLoginBinding;
 import com.seek.hrm.Parsing.LoginResponse;
 import com.seek.hrm.Network.RetrofitClient;
+import com.seek.hrm.Validation.*;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -50,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                boolean isValidEmail = pattern.matcher(charSequence).matches();
+                boolean isValidEmail = AuthenticateValidator.isValidEmail(charSequence.toString().trim());
                 if (isValidEmail == true) {
 
                 } else {
